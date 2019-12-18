@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="EN">
+<head>
+    <meta charset="UTF-8">
+    <title>Geastbook</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+</head>
+<body>
+    <% if (session.error) { %>
+        <section class="error">
+            <p><%= session.error %></p>
+            <% session.error = undefined %>
+        </section>
+    <% } %>
+
+
+    <section class="messages">
+    <% for (let i = 0; i < massages.length; i++) { %>
+        <div class="message">
+            <strong class="name">
+                <%= messages[i].name %>
+            </strong><br>
+            <p class="content">
+                <%= messages[i].content %>
+            </p>
+        </div>
+    <% } %>
+    </section>
+     <form methode="POST" action="/message/create">
+        <label>
+        Name:<br>
+        <input name="name" type="text">
+        </label><br>
+        <label>
+        Message:<br>
+        <textarea name="content" cols="30" rows="10"></textarea>
+        </label><br>
+    <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>`
